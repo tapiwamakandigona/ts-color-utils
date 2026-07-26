@@ -65,7 +65,7 @@ export function generatePalette(hex: string, count: number = 5): string[] {
   const rgb = hexToRgb(hex);
   const palette: string[] = [];
   for (let i = 0; i < count; i++) {
-    const factor = (i / (count - 1)) * 2 - 1; // -1 to 1
+    const factor = count === 1 ? 0 : (i / (count - 1)) * 2 - 1; // -1 to 1
     const adjusted = factor > 0 ? lighten(rgb, factor * 40) : darken(rgb, Math.abs(factor) * 40);
     palette.push(`#${[adjusted.r, adjusted.g, adjusted.b].map(v => Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0')).join('')}`);
   }
