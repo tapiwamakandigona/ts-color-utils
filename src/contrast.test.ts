@@ -38,4 +38,9 @@ describe('generatePalette', () => {
     expect(palette).toHaveLength(5);
     expect(palette[0]).toMatch(/^#[0-9a-f]{6}$/);
   });
+  it('handles count of 1 without NaN', () => {
+    const palette = generatePalette('#6366f1', 1);
+    expect(palette).toHaveLength(1);
+    expect(palette[0]).toMatch(/^#[0-9a-f]{6}$/);
+  });
 });
